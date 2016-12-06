@@ -1,7 +1,3 @@
 <?php
 
 Pikachu;
-
-Digimon;
-
-xxx;
