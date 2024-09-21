@@ -32,9 +32,23 @@ jobs:
         pip install black
 
     # Step 5: Run Black code formatter
-    - name: Run Black
+    # - name: Run Black
+    #   run: |
+    #     black . --check
+
+    # Step 5: Reformat the code instead of just checking
+    - name: Run Black Formatter
       run: |
-        black . --check
+        black .
+
+    # Step 6: Commit and push changes if any files were reformatted
+    - name: Commit changes
+      run: |
+        git config --global user.name "GitHub Action"
+        git config --global user.email "action@github.com"
+        git add .
+        git commit -m "Auto-format Python code with Black" || echo "No changes to commit"
+        git push
 
     # Optional Step 6: Run any Node.js based tasks (if needed)
     # - name: Run Node.js commands
