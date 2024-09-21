@@ -1,4 +1,4 @@
-name: Format Python Code with Black using Node.js 16
+name: Format Python Code with Black using Node.js 20
 
 # This workflow will run on push and pull request events
 on: [push, pull_request]
@@ -9,19 +9,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Set up Node.js 16 environment (optional if you want Node.js 16)
-    - name: Set up Node.js 16
+    # Step 1: Set up Node.js 20 environment
+    - name: Set up Node.js 20
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '20' # Specify Node.js version 20
 
     # Step 2: Check out the code from the repository
     - name: Check out code
-      uses: actions/checkout@v3 # Updated to version 3 to ensure Node.js 16 compatibility
+      uses: actions/checkout@v3 # Compatible with Node.js 20
 
     # Step 3: Set up Python environment
     - name: Set up Python
-      uses: actions/setup-python@v4 # Updated to version 4 to ensure Node.js 16 compatibility
+      uses: actions/setup-python@v4 # Compatible with Node.js 20
       with:
         python-version: '3.x'
 
@@ -35,3 +35,9 @@ jobs:
     - name: Run Black
       run: |
         black . --check
+
+    # Optional Step 6: Run any Node.js based tasks (if needed)
+    # - name: Run Node.js commands
+    #   run: |
+    #     npm install
+    #     npm run some-task
