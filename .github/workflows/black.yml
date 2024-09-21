@@ -1,24 +1,37 @@
-name: Format Python Code
+name: Format Python Code with Black and Node.js 16
 
+# Triggers the workflow on push or pull request events.
 on: [push, pull_request]
 
 jobs:
   format-code:
+    # Set the environment to Ubuntu with Node.js 16
     runs-on: ubuntu-latest
+
     steps:
+    # Step 1: Set up Node.js 16 environment
+    - name: Set up Node.js 16
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    # Step 2: Check out the code from the repository
     - name: Check out code
       uses: actions/checkout@v2
 
+    # Step 3: Set up Python environment
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
 
-    - name: Install dependencies
+    # Step 4: Install Black
+    - name: Install Black
       run: |
         python -m pip install --upgrade pip
         pip install black
 
+    # Step 5: Run Black
     - name: Run Black
       run: |
         black . --check
