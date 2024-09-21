@@ -1,30 +1,38 @@
-def example_function  (x,y):
-     if x>10:
-      print("X is greater than 10")
+
+import math,sys
+
+
+
+def calc_circle_area ( radius ):
+
+    pi= 3.14159
+    
+    if radius< 0: 
+     return "Error: Negative radius not allowed"
+    area= pi* (radius** 2 )
+    
+    return    area
+
+   class Shape :
+       def __init__  (self, name):
+        self.name=name
+        
+       def   display_name(self):
+        print(   f"Shape name is: {self.name}")
+        
+
+def complicated_function(    a ,b, c):
+  if a+b> c: print("a + b is greater than c") ; return a *b
+  elif a+b <c :
+     print("a + b is less than c"); return a -b
   else:
-          print(   "X is 10 or less")
-  for i in range( 0,10):
-     if  i% 2==0:print(    f"{i} is even")
-     else:
-      print(f"{i} is odd") 
-      return  x+y
-def   another_function( a,  b ):
-          if a == b:
-       print("a is equal to b") ; print("This is a sample statement");
-               return None
- else:
-  print(    "a is not equal to b");return a -b
+       print("a + b is equal to c") ; return 0
+       
+def main_function( ):
+        shape=Shape( "Circle" )
+    shape.display_name(  )
+    result=calc_circle_area( 5 )
+    print("Area of circle:",result)
 
-    class SampleClass :
- def  __init__( self, value ) :
-           self.value=value
-          def display_value(  self  ):
-             print(  "The value is",self.value)
-
-def  main( ) :
-      ex_result=example_function(10,20)
- print("Result of example_function:", ex_result)
-         obj=SampleClass(   42)
-    obj.display_value()
-another_function(5,10)
-main(   )
+ complicated_function( 10,5, 20 )
+main_function( )
